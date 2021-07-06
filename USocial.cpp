@@ -14,7 +14,6 @@ USocial::~USocial() {
 		delete it->second;
 	}
 	_users.clear();
-	std::cout << "USocial is destructed." << std::endl;
 }
 User* USocial::registerUser(string name) {
 	User* user = new User(name, this, _id_counter);
