@@ -6,5 +6,7 @@ Message::Message(std::string str) {
 std::string Message::getText() {
 	return this->text;
 }
+Message::~Message() {
+}
 
 

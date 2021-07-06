@@ -3,5 +3,6 @@ class Media
 {
 public:
 	virtual void display() = 0;
+	~Media();
 };
 

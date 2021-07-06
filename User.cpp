@@ -24,7 +24,12 @@ User::User() {
 
 }
 User::~User() {
-	delete this;
+	for (const auto& message: _recievedMessages) {
+		delete message;
+	}
+	for (const auto& post : _posts) {
+		delete post;
+	}
 }
 unsigned long User::getId() {
 	return _id;
@@ -33,7 +38,7 @@ string User::getName() {
 	return _name;
 }
 void User::addFriend(User* user) {
-	if (!friendExists(user)) {
+	if (friendExists(user)) {
 		std::stringstream message;
 		message << "User with id " << user->getId() << " is not your friend.";
 		throw std::invalid_argument(message.str());
@@ -74,9 +79,9 @@ void User::recieveMessage(Message* message) {
 }
 void User::sendMessage(User* user, Message* message) {
 	if (!friendExists(user)) {
-		std::stringstream message;
-		message << "User with id " << user->getId() << " is not your friend. Cannot send message.";
-		throw std::invalid_argument(message.str());
+		std::stringstream errorMessage;
+		errorMessage << "User with id " << user->getId() << " is not your friend. Cannot send message.";
+		throw std::invalid_argument(errorMessage.str());
 	}
 	user->recieveMessage(message);
 }

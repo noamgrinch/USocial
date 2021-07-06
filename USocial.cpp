@@ -38,3 +38,11 @@ User* USocial::getUserById(unsigned long id) {
 	}
 	return _users.find(id)->second;
 }
+void USocial::kill() {
+	map<unsigned long, User*>::iterator it;
+	for (it = _users.begin(); it != _users.end(); it++)
+	{
+		delete it->second;
+	}
+	_users.clear();
+}

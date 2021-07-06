@@ -11,5 +11,6 @@ public:
 	Media* getMedia();
 	Post(const std::string str);
 	Post(const std::string str, Media* media);
+	~Post();
 };
 

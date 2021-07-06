@@ -12,5 +12,6 @@ public:
 	User* registerUser(std::string name, bool boolean);
 	User* getUserById(unsigned long id);
 	void removeUser(User* user);
+	void kill();
 };
 
