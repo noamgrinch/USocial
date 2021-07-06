@@ -8,10 +8,10 @@ private:
 	unsigned long _id_counter;
 public:
 	USocial();
+	~USocial();
 	User* registerUser(std::string name);
 	User* registerUser(std::string name, bool boolean);
 	User* getUserById(unsigned long id);
 	void removeUser(User* user);
-	void kill();
 };
 

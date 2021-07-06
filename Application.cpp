@@ -5,7 +5,6 @@
 #include "Audio.h"
 #include "Photo.h"
 #include "Message.h"
-#include <crtdbg.h>
 int main()// Example program from assignment.
 {
 	USocial us;
@@ -36,7 +35,5 @@ int main()// Example program from assignment.
 	u3->addFriend(u5);
 	u3->sendMessage(u5, new Message("All your base are belong to us"));
 	u5->viewReceivedMessages();
-	us.kill();
-	_CrtDumpMemoryLeaks();
 	return 0;
 }

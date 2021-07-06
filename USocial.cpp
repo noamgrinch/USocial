@@ -7,6 +7,15 @@ using namespace std;
 USocial::USocial() {
 	_id_counter = 1;
 }
+USocial::~USocial() {
+	map<unsigned long, User*>::iterator it;
+	for (it = _users.begin(); it != _users.end(); it++)
+	{
+		delete it->second;
+	}
+	_users.clear();
+	std::cout << "USocial is destructed." << std::endl;
+}
 User* USocial::registerUser(string name) {
 	User* user = new User(name, this, _id_counter);
 	_users.insert({ _id_counter , user });
@@ -37,12 +46,4 @@ User* USocial::getUserById(unsigned long id) {
 		throw std::invalid_argument(message.str());
 	}
 	return _users.find(id)->second;
-}
-void USocial::kill() {
-	map<unsigned long, User*>::iterator it;
-	for (it = _users.begin(); it != _users.end(); it++)
-	{
-		delete it->second;
-	}
-	_users.clear();
 }
